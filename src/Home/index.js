@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BookShelf from './BookShelf'
+import BookShelf from '../BookShelf'
 import { Link } from 'react-router-dom'
 
 const shelves = {
@@ -10,7 +10,7 @@ const shelves = {
 }
 
 const Home = props => (
-  <div className="list-books">
+  <div className="list-books" data-test="home-component">
     <div className="list-books-title">
       <h1>My Reads</h1>
     </div>
@@ -22,13 +22,15 @@ const Home = props => (
               key={key}
               title={shelves[key]}
               books={props.books.filter(b => b.shelf === key)}
-              handleChange={props.handleChange} />
+              handleChange={props.handleChange} 
+              data-test="book-shelf"
+              />
           ))
         }
       </div>
     </div>
     <div className="open-search">
-      <Link to="/search" />
+      <Link to="/search" data-test="search-link" />
     </div>
   </div>
 )
